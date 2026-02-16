@@ -1,19 +1,27 @@
 class Compress < Formula
-  desc "binary that watch folder for mov and convert with ffmpet go mp4"
+  desc "Compress is a file watcher that monitors ~/Desktop/screenshots for *.mov files and converts it to *.mp4 using Ffmpeg"
   homepage "https://github.com/xopo/compress"
-  url "https://github.com/xopo/compress/releases/download/0.1_alpha_mac_silicon/compress.tar.gz"
-  sha256 "6376744e50716b704079314d95d5485f9b990c7c7b4ddda39f7dd5daed828c67" # Get this via 'shasum -a 256 filename'
+  version "v0.2.beta"
+  url "https://github.com/xopo/compress/releases/download/beta/compress.tar.gz"
+  sha256 "4bf1bf13b51f4bc96d9e431ca8ef7a217871797eb195e2424b6f1f5034763701"
   license "MIT"
 
   def install
-    # If it's a Go/Rust/Compiled binary:
-    bin.install "compress.bin"
-    
-    # If it's a script (like Python or Bash):
-    # bin.install "mytool.sh" => "mytool"
+    if OS.mac? && Hardware::CPU.arm?
+      bin.install "compress.bin"
+    else 
+      odie <<~EOS
+        ❌ Unsupported platform. For now the Homebrew formula only suports:
+        · Mac with Apple Silicon
+        You can build the binary from source :https://github.com/xopo/compress
+        EOS
+    end
   end
 
-  # test do
-  #   system "#{bin}/mytool", "--version"
-  # end
+  service do 
+    run [opt_bin/"compress.bin", "-w"]
+    keep_alive true
+    #log_path var/"log/compress.log"
+    #error_log_path var/"log/compress-error.log"
+  end
 end
