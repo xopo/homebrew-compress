@@ -1,4 +1,4 @@
-class Mytool < Formula
+class Compress < Formula
   desc "binary that watch folder for mov and convert with ffmpet go mp4"
   homepage "https://github.com/xopo/compress"
   url "https://github.com/xopo/compress/releases/download/0.1_alpha_mac_silicon/compress.tar.gz"
@@ -7,7 +7,7 @@ class Mytool < Formula
 
   def install
     # If it's a Go/Rust/Compiled binary:
-    bin.install "compress"
+    bin.install "compress.bin"
     
     # If it's a script (like Python or Bash):
     # bin.install "mytool.sh" => "mytool"
