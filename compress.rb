@@ -1,9 +1,9 @@
 class Compress < Formula
   desc "Compress is a file watcher that monitors ~/Desktop/screenshots for *.mov files and converts it to *.mp4 using Ffmpeg"
   homepage "https://github.com/xopo/compress"
-  version "v0.6.beta"
-  url "https://github.com/xopo/compress/releases/download/v0.6.beta/compress.bin"
-  sha256 "b522d4765b6d823937259dd31d6945e8352ad40399f05e5127a48b27564c81c3"
+  version "v0.6.1.beta"
+  url "https://github.com/xopo/compress/releases/download/v0.6.1.beta/compress.bin"
+  sha256 "9226e9a9fb46620a87001bec4633aa681ee9b74f35a2191e64ccee5bc7de47d1"
   license "MIT"
 
   def install
